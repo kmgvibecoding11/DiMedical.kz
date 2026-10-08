@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DiMedical — многопрофильный медицинский центр</title>
+<meta name="description" content="DiMedical: стоматология, гастроэнтерология, гинекология, терапия, педиатрия, кардиология, неврология, УЗИ и лаборатория. Запишитесь на приём онлайн.">
+<meta property="og:title" content="DiMedical — многопрофильный медицинский центр">
+<meta property="og:description" content="Стоматология, гастроэнтерология, гинекология и другие направления в одном центре.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Montserrat:wght@600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4faf9; --surface:#ffffff; --surface-2:#e6f4f1; --text:#12302d; --muted:#4a6663;
+  --primary:#0f766e; --primary-hover:#0b5f58; --on-primary:#ffffff; --accent:#c9ece5;
+  --border:#d3e6e2; --shadow:0 8px 28px rgba(15,118,110,.10); --focus:#0b5f58;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1c1b; --surface:#132a28; --surface-2:#173733; --text:#e6f3f1; --muted:#9fbcb8;
+    --primary:#4fd1c0; --primary-hover:#7fe0d3; --on-primary:#06201d; --accent:#1d4540;
+    --border:#25443f; --shadow:0 8px 28px rgba(0,0,0,.35); --focus:#7fe0d3;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1c1b; --surface:#132a28; --surface-2:#173733; --text:#e6f3f1; --muted:#9fbcb8;
+  --primary:#4fd1c0; --primary-hover:#7fe0d3; --on-primary:#06201d; --accent:#1d4540;
+  --border:#25443f; --shadow:0 8px 28px rgba(0,0,0,.35); --focus:#7fe0d3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 "Fira Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Montserrat,"Fira Sans",sans-serif;line-height:1.2;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.eyebrow{color:var(--primary);font:700 .8rem Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700}
+.lead{color:var(--muted);max-width:640px;margin:12px 0 0}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.25rem Montserrat,sans-serif}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--primary);display:grid;place-items:center}
+.logo-mark svg{width:20px;height:20px;fill:var(--on-primary)}
+.logo b{color:var(--primary)}
+nav{margin-left:auto;display:flex;gap:6px}
+nav a{text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500;color:var(--muted)}
+nav a:hover{background:var(--surface-2);color:var(--text)}
+.tools{display:flex;gap:8px}
+.chip{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;height:38px;min-width:38px;padding:0 12px;font:600 .85rem Montserrat,sans-serif;cursor:pointer}
+.chip:hover{border-color:var(--primary)}
+@media(max-width:860px){nav{display:none}.tools{margin-left:auto}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:12px;border:2px solid var(--primary);font:600 1rem Montserrat,sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
+.btn-primary{background:var(--primary);color:var(--on-primary)}
+.btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.btn-ghost{background:transparent;color:var(--primary)}
+.btn-ghost:hover{background:var(--surface-2)}
+
+/* hero */
+.hero{padding-top:140px;background:radial-gradient(900px 400px at 85% 0%,var(--accent),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--primary)}
+.hero p.sub{font-size:1.15rem;color:var(--muted);max-width:560px;margin:18px 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;max-width:560px}
+.fact strong{display:block;font:800 1.7rem Montserrat,sans-serif;color:var(--primary)}
+.fact span{font-size:.9rem;color:var(--muted)}
+.hours{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+.hours h3{font-size:1.1rem;margin-bottom:16px}
+.hours dl{margin:0}
+.hours div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--border)}
+.hours div:last-child{border:0}
+.hours dt{color:var(--muted)}.hours dd{margin:0;font-weight:500}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:var(--surface-2);color:var(--primary);padding:6px 12px;border-radius:99px;font-weight:500;font-size:.9rem}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+
+/* services */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:36px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;margin-bottom:18px}
+.ico svg{width:28px;height:28px;stroke:var(--primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.25rem;margin-bottom:12px}
+.card ul{list-style:none;margin:0;padding:0;color:var(--muted)}
+.card li{padding:5px 0 5px 22px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:2px;background:var(--primary);border-radius:2px}
+.more{margin-top:40px}
+.more h3{font-size:1.1rem;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:var(--surface);border:1px solid var(--border);padding:9px 18px;border-radius:99px;font-weight:500}
+
+/* steps */
+.alt{background:var(--surface-2)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:36px;counter-reset:s}
+.step{background:var(--surface);border-radius:20px;padding:26px;position:relative;border:1px solid var(--border)}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--on-primary);font:700 1.1rem Montserrat,sans-serif;margin-bottom:16px}
+.step h3{font-size:1.1rem;margin-bottom:8px}
+.step p{margin:0;color:var(--muted)}
+
+/* about */
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:36px}
+.perk{padding:24px;border-left:4px solid var(--primary);background:var(--surface);border-radius:0 16px 16px 0}
+.perk h3{font-size:1.05rem;margin-bottom:8px}
+.perk p{margin:0;color:var(--muted)}
+
+/* contacts */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;margin-top:36px}
+.info{display:grid;gap:14px;align-content:start}
+.info div{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.info small{display:block;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+.info a{text-decoration:none;color:var(--primary);font-weight:500}
+form{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow);display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:500}
+input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--focus);outline-offset:1px;border-color:var(--primary)}
+textarea{min-height:96px;resize:vertical}
+.req{color:var(--primary)}
+.note{font-size:.85rem;color:var(--muted);margin:0}
+.ok{display:none;background:var(--surface-2);border:1px solid var(--primary);color:var(--text);padding:14px 16px;border-radius:12px}
+.ok.show{display:block}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="DiMedical">
+      <span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"/></svg></span>
+      <span>Di<b>Medical</b></span>
+    </a>
+    <nav aria-label="Меню">
+      <a href="#services" data-i18n="nav_services">Услуги</a>
+      <a href="#process" data-i18n="nav_process">Приём</a>
+      <a href="#about" data-i18n="nav_about">О центре</a>
+      <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
+    </nav>
+    <div class="tools">
+      <button class="chip" id="lang" type="button" aria-label="Language">ҚАЗ</button>
+      <button class="chip" id="theme" type="button" aria-label="Theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" data-i18n="hero_eyebrow">Многопрофильный медицинский центр</p>
+        <h1 data-i18n-html="hero_title">Здоровье всей семьи — <em>в одном месте</em></h1>
+        <p class="sub" data-i18n="hero_sub">Стоматология, гастроэнтерология, гинекология и другие направления. Понятные объяснения, современная диагностика, внимательные врачи.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contacts" data-i18n="cta_book">Записаться на приём</a>
+          <a class="btn btn-ghost" href="#services" data-i18n="cta_services">Все услуги</a>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>9+</strong><span data-i18n="fact1">направлений</span></div>
+          <div class="fact"><strong>7/7</strong><span data-i18n="fact2">дней в неделю</span></div>
+          <div class="fact"><strong>1 день</strong><span data-i18n="fact3">диагностика и план лечения</span></div>
+        </div>
+      </div>
+      <aside class="hours" aria-labelledby="hrs">
+        <h3 id="hrs" data-i18n="hours_title">Режим работы</h3>
+        <dl>
+          <div><dt data-i18n="wd">Пн–Пт</dt><dd>08:00–20:00</dd></div>
+          <div><dt data-i18n="sat">Суббота</dt><dd>09:00–18:00</dd></div>
+          <div><dt data-i18n="sun">Воскресенье</dt><dd>10:00–16:00</dd></div>
+        </dl>
+        <span class="badge"><i></i><span data-i18n="hours_badge">Приём по записи</span></span>
+      </aside>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_services">Услуги</p>
+      <h2 data-i18n="svc_title">Основные направления</h2>
+      <p class="lead" data-i18n="svc_lead">Всё, что нужно для здоровья, — рядом и без лишней беготни по клиникам.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3c-2.5 0-4 2-4 4.5 0 2 1 3.5 1.5 5.5.6 2.5.8 7 3 7 1.5 0 1.7-3 2.5-4.5.5-1 1.5-1 2 0 .8 1.500 1 4.500 2.500 4.500 2.200 0 2.400-4.500 3-7 .5-2 1.500-3.500 1.500-5.500C20 5 18.500 3 16 3c-1.800 0-2.500 1-4 1S8.800 3 7 3z"/></svg></div>
+          <h3 data-i18n="dent">Стоматология</h3>
+          <ul>
+            <li data-i18n="dent1">Осмотр и консультация</li>
+            <li data-i18n="dent2">Лечение кариеса и пульпита</li>
+            <li data-i18n="dent3">Профессиональная чистка</li>
+            <li data-i18n="dent4">Протезирование и имплантация</li>
+            <li data-i18n="dent5">Детская стоматология</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3v5c0 2-3 2-3 5 0 3 2 4 4 4h2c2 0 3-1 3-3s-2-2-2-4V3"/><path d="M12 17v4"/><path d="M15 6c2 0 4 1 4 3"/></svg></div>
+          <h3 data-i18n="gas">Гастроэнтерология</h3>
+          <ul>
+            <li data-i18n="gas1">Консультация гастроэнтеролога</li>
+            <li data-i18n="gas2">Гастроскопия и колоноскопия</li>
+            <li data-i18n="gas3">Лечение гастрита и язвы</li>
+            <li data-i18n="gas4">Заболевания печени и поджелудочной</li>
+            <li data-i18n="gas5">Диетологическое сопровождение</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M12 14v8M8.500 18.500h7"/></svg></div>
+          <h3 data-i18n="gyn">Гинекология</h3>
+          <ul>
+            <li data-i18n="gyn1">Профилактический осмотр</li>
+            <li data-i18n="gyn2">Ведение беременности</li>
+            <li data-i18n="gyn3">Планирование семьи</li>
+            <li data-i18n="gyn4">Лечение гинекологических заболеваний</li>
+            <li data-i18n="gyn5">УЗИ органов малого таза</li>
+          </ul>
+        </article>
+      </div>
+      <div class="more">
+        <h3 data-i18n="more_title">Другие направления</h3>
+        <div class="tags">
+          <span class="tag" data-i18n="t1">Терапия</span>
+          <span class="tag" data-i18n="t2">Педиатрия</span>
+          <span class="tag" data-i18n="t3">Кардиология</span>
+          <span class="tag" data-i18n="t4">Неврология</span>
+          <span class="tag" data-i18n="t5">УЗИ</span>
+          <span class="tag" data-i18n="t6">Лаборатория</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="alt">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_process">Приём</p>
+      <h2 data-i18n="proc_title">Как проходит приём</h2>
+      <div class="steps">
+        <div class="step"><h3 data-i18n="s1h">Запись</h3><p data-i18n="s1p">Оставьте заявку на сайте или позвоните — подберём удобное время.</p></div>
+        <div class="step"><h3 data-i18n="s2h">Консультация</h3><p data-i18n="s2p">Врач выслушает, задаст вопросы и объяснит всё простым языком.</p></div>
+        <div class="step"><h3 data-i18n="s3h">Диагностика</h3><p data-i18n="s3p">При необходимости сразу проведём УЗИ и анализы в нашем центре.</p></div>
+        <div class="step"><h3 data-i18n="s4h">План лечения</h3><p data-i18n="s4p">Получите понятный план с этапами и ориентировочной стоимостью.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_about">О центре</p>
+      <h2 data-i18n="about_title">Почему выбирают DiMedical</h2>
+      <div class="perks">
+        <div class="perk"><h3 data-i18n="p1h">Комплексный подход</h3><p data-i18n="p1p">Специалисты разных профилей работают вместе над вашим случаем.</p></div>
+        <div class="perk"><h3 data-i18n="p2h">Прозрачные цены</h3><p data-i18n="p2p">Стоимость обсуждаем до начала лечения — без скрытых платежей.</p></div>
+        <div class="perk"><h3 data-i18n="p3h">Внимание к пациенту</h3><p data-i18n="p3p">Не торопим, отвечаем на вопросы и сопровождаем после приёма.</p></div>
+        <div class="perk"><h3 data-i18n="p4h">Удобное расположение</h3><p data-i18n="p4p">Центр рядом с транспортом, есть парковка для пациентов.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" class="alt">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_contacts">Контакты</p>
+      <h2 data-i18n="cont_title">Контакты и запись</h2>
+      <div class="contact-grid">
+        <div class="info">
+          <div><small data-i18n="addr_l">Адрес</small><span data-i18n="addr_v">г. Алматы, ул. Примерная, 10</span></div>
+          <div><small data-i18n="phone_l">Телефон</small><a href="tel:+77000000000">+7 (700) 000-00-00</a></div>
+          <div><small>Email</small><a href="mailto:info@dimedical.kz">info@dimedical.kz</a></div>
+          <div><small data-i18n="hours_title">Режим работы</small><span data-i18n="hours_short">Пн–Пт 08:00–20:00, Сб 09:00–18:00, Вс 10:00–16:00</span></div>
+        </div>
+        <form id="form" novalidate>
+          <label><span><span data-i18n="f_name">Имя</span> <span class="req">*</span></span>
+            <input name="name" autocomplete="name" required></label>
+          <label><span><span data-i18n="f_phone">Телефон</span> <span class="req">*</span></span>
+            <input name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>
+          <label><span data-i18n="f_dir">Направление</span>
+            <select name="dir">
+              <option data-i18n="dent">Стоматология</option>
+              <option data-i18n="gas">Гастроэнтерология</option>
+              <option data-i18n="gyn">Гинекология</option>
+              <option data-i18n="t1">Терапия</option>
+              <option data-i18n="t2">Педиатрия</option>
+              <option data-i18n="t3">Кардиология</option>
+              <option data-i18n="t4">Неврология</option>
+              <option data-i18n="t5">УЗИ</option>
+              <option data-i18n="t6">Лаборатория</option>
+            </select></label>
+          <label><span data-i18n="f_msg">Комментарий</span><textarea name="msg"></textarea></label>
+          <button class="btn btn-primary" type="submit" data-i18n="f_send">Записаться</button>
+          <p class="ok" id="ok" role="status" data-i18n="f_ok">Спасибо! Это демо-версия: заявка пока никуда не отправляется.</p>
+          <p class="note" data-i18n="f_note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DiMedical</span>
+    <span data-i18n="disclaimer">Сайт не заменяет консультацию врача.</span>
+  </div>
+</footer>
+
+<script>
+const T = {
+ru:{
+ nav_services:"Услуги",nav_process:"Приём",nav_about:"О центре",nav_contacts:"Контакты",
+ hero_eyebrow:"Многопрофильный медицинский центр",
+ hero_title:"Здоровье всей семьи — <em>в одном месте</em>",
+ hero_sub:"Стоматология, гастроэнтерология, гинекология и другие направления. Понятные объяснения, современная диагностика, внимательные врачи.",
+ cta_book:"Записаться на приём",cta_services:"Все услуги",
+ fact1:"направлений",fact2:"дней в неделю",fact3:"диагностика и план лечения",
+ hours_title:"Режим работы",wd:"Пн–Пт",sat:"Суббота",sun:"Воскресенье",hours_badge:"Приём по записи",
+ svc_title:"Основные направления",svc_lead:"Всё, что нужно для здоровья, — рядом и без лишней беготни по клиникам.",
+ dent:"Стоматология",dent1:"Осмотр и консультация",dent2:"Лечение кариеса и пульпита",dent3:"Профессиональная чистка",dent4:"Протезирование и имплантация",dent5:"Детская стоматология",
+ gas:"Гастроэнтерология",gas1:"Консультация гастроэнтеролога",gas2:"Гастроскопия и колоноскопия",gas3:"Лечение гастрита и язвы",gas4:"Заболевания печени и поджелудочной",gas5:"Диетологическое сопровождение",
+ gyn:"Гинекология",gyn1:"Профилактический осмотр",gyn2:"Ведение беременности",gyn3:"Планирование семьи",gyn4:"Лечение гинекологических заболеваний",gyn5:"УЗИ органов малого таза",
+ more_title:"Другие направления",t1:"Терапия",t2:"Педиатрия",t3:"Кардиология",t4:"Неврология",t5:"УЗИ",t6:"Лаборатория",
+ proc_title:"Как проходит приём",
+ s1h:"Запись",s1p:"Оставьте заявку на сайте или позвоните — подберём удобное время.",
+ s2h:"Консультация",s2p:"Врач выслушает, задаст вопросы и объяснит всё простым языком.",
+ s3h:"Диагностика",s3p:"При необходимости сразу проведём УЗИ и анализы в нашем центре.",
+ s4h:"План лечения",s4p:"Получите понятный план с этапами и ориентировочной стоимостью.",
+ about_title:"Почему выбирают DiMedical",
+ p1h:"Комплексный подход",p1p:"Специалисты разных профилей работают вместе над вашим случаем.",
+ p2h:"Прозрачные цены",p2p:"Стоимость обсуждаем до начала лечения — без скрытых платежей.",
+ p3h:"Внимание к пациенту",p3p:"Не торопим, отвечаем на вопросы и сопровождаем после приёма.",
+ p4h:"Удобное расположение",p4p:"Центр рядом с транспортом, есть парковка для пациентов.",
+ cont_title:"Контакты и запись",addr_l:"Адрес",addr_v:"г. Алматы, ул. Примерная, 10",phone_l:"Телефон",
+ hours_short:"Пн–Пт 08:00–20:00, Сб 09:00–18:00, Вс 10:00–16:00",
+ f_name:"Имя",f_phone:"Телефон",f_dir:"Направление",f_msg:"Комментарий",f_send:"Записаться",
+ f_ok:"Спасибо! Это демо-версия: заявка пока никуда не отправляется.",
+ f_note:"Нажимая кнопку, вы соглашаетесь на обработку персональных данных.",
+ f_err:"Укажите имя и телефон.",
+ disclaimer:"Сайт не заменяет консультацию врача."
+},
+kk:{
+ nav_services:"Қызметтер",nav_process:"Қабылдау",nav_about:"Орталық туралы",nav_contacts:"Байланыс",
+ hero_eyebrow:"Көпсалалы медициналық орталық",
+ hero_title:"Бүкіл отбасының денсаулығы — <em>бір жерде</em>",
+ hero_sub:"Стоматология, гастроэнтерология, гинекология және басқа бағыттар. Түсінікті түсіндірме, заманауи диагностика, мұқият дәрігерлер.",
+ cta_book:"Қабылдауға жазылу",cta_services:"Барлық қызметтер",
+ fact1:"бағыт",fact2:"аптасына күн",fact3:"диагностика және емдеу жоспары",
+ hours_title:"Жұмыс уақыты",wd:"Дс–Жм",sat:"Сенбі",sun:"Жексенбі",hours_badge:"Алдын ала жазылу бойынша",
+ svc_title:"Негізгі бағыттар",svc_lead:"Денсаулыққа қажеттінің бәрі — бір жерде, клиникаларды аралап жүрмей.",
+ dent:"Стоматология",dent1:"Тексеру және кеңес беру",dent2:"Кариес пен пульпитті емдеу",dent3:"Кәсіби тазалау",dent4:"Протездеу және имплантация",dent5:"Балалар стоматологиясы",
+ gas:"Гастроэнтерология",gas1:"Гастроэнтеролог кеңесі",gas2:"Гастроскопия және колоноскопия",gas3:"Гастрит пен жараны емдеу",gas4:"Бауыр мен ұйқы безі аурулары",gas5:"Диетологиялық сүйемелдеу",
+ gyn:"Гинекология",gyn1:"Профилактикалық тексеру",gyn2:"Жүктілікті жүргізу",gyn3:"Отбасын жоспарлау",gyn4:"Гинекологиялық аурулардың емі",gyn5:"Жамбас ағзаларының УДЗ",
+ more_title:"Басқа бағыттар",t1:"Терапия",t2:"Педиатрия",t3:"Кардиология",t4:"Неврология",t5:"УДЗ",t6:"Зертхана",
+ proc_title:"Қабылдау қалай өтеді",
+ s1h:"Жазылу",s1p:"Сайтта өтінім қалдырыңыз немесе қоңырау шалыңыз — ыңғайлы уақытты таңдаймыз.",
+ s2h:"Кеңес беру",s2p:"Дәрігер тыңдап, сұрақ қойып, бәрін қарапайым тілмен түсіндіреді.",
+ s3h:"Диагностика",s3p:"Қажет болса, орталығымызда бірден УДЗ және талдаулар жасаймыз.",
+ s4h:"Емдеу жоспары",s4p:"Кезеңдері мен шамамен құны көрсетілген түсінікті жоспар аласыз.",
+ about_title:"DiMedical-ді неге таңдайды",
+ p1h:"Кешенді тәсіл",p1p:"Әртүрлі бейіндегі мамандар сіздің жағдайыңыз бойынша бірге жұмыс істейді.",
+ p2h:"Ашық бағалар",p2p:"Құнын емдеуді бастамас бұрын талқылаймыз — жасырын төлемдерсіз.",
+ p3h:"Пациентке назар",p3p:"Асықтырмаймыз, сұрақтарға жауап береміз, қабылдаудан кейін де қолдау көрсетеміз.",
+ p4h:"Ыңғайлы орналасу",p4p:"Орталық көлік тоқтайтын жерге жақын, пациенттерге тұрақ бар.",
+ cont_title:"Байланыс және жазылу",addr_l:"Мекенжай",addr_v:"Алматы қ., Үлгі көшесі, 10",phone_l:"Телефон",
+ hours_short:"Дс–Жм 08:00–20:00, Сб 09:00–18:00, Жс 10:00–16:00",
+ f_name:"Аты-жөні",f_phone:"Телефон",f_dir:"Бағыт",f_msg:"Пікір",f_send:"Жазылу",
+ f_ok:"Рақмет! Бұл демо-нұсқа: өтінім әзірге ешқайда жіберілмейді.",
+ f_note:"Түймені басу арқылы жеке деректерді өңдеуге келісім бересіз.",
+ f_err:"Аты-жөніңіз бен телефоныңызды көрсетіңіз.",
+ disclaimer:"Сайт дәрігер кеңесін алмастырмайды."
+}};
+
+const root = document.documentElement;
+const store = {
+  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
+  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+};
+
+let lang = store.get("lang") || "ru";
+function applyLang(l){
+  lang = l; store.set("lang", l);
+  root.lang = l === "kk" ? "kk" : "ru";
+  document.querySelectorAll("[data-i18n]").forEach(el => { const v = T[l][el.dataset.i18n]; if(v) el.textContent = v; });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => { const v = T[l][el.dataset.i18nHtml]; if(v) el.innerHTML = v; });
+  document.getElementById("lang").textContent = l === "kk" ? "РУС" : "ҚАЗ";
+  document.title = l === "kk" ? "DiMedical — көпсалалы медициналық орталық" : "DiMedical — многопрофильный медицинский центр";
+}
+document.getElementById("lang").addEventListener("click", () => applyLang(lang === "ru" ? "kk" : "ru"));
+applyLang(lang);
+
+// theme: system by default, manual override remembered
+const saved = store.get("theme");
+if(saved) root.dataset.theme = saved;
+document.getElementById("theme").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const next = dark ? "light" : "dark";
+  root.dataset.theme = next; store.set("theme", next);
+});
+
+// demo form
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, ok = document.getElementById("ok");
+  if(!f.name.value.trim() || !f.phone.value.trim()){
+    ok.textContent = T[lang].f_err; ok.classList.add("show"); (f.name.value.trim() ? f.phone : f.name).focus(); return;
+  }
+  ok.textContent = T[lang].f_ok; ok.classList.add("show"); f.reset();
+});
+</script>
+</body>
+</html>
